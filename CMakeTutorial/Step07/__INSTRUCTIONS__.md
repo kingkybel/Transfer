@@ -1,9 +1,9 @@
 # Conditional builds/build configurations
 One of the powerful features of cmake is, that we can define the build process in a way so that it 
-an be customised for different conditions.
+can be customised for different conditions.
 Say we want to create an application that has the absolutely best performance, when it is run in a
 production environment. An application like that would
-- strip all debugging- and unnecessary symbol infrormation from the executable
+- strip all debugging- and unnecessary symbol information from the executable
 - optimise loops, inline functions, etc
 - strip information about source-file-locations 
 - and more...
@@ -75,6 +75,8 @@ set(CMAKE_DEBUG_POSTFIX _dbg)
 08) run: `strings step7 > step7.str ; strings step7_dbg > step7_dbg.str`
     This just creates 2 text file (one for each exe) containing readable strings in the respective executables
 19) run: `diff step7.str step7_dbg.str`
+_NOTE_: diff is a command-line comparison utility, but you can use the VSCode-comparison for visual comparison
+        if you prefer
 20) compare sizes of debug and release executables and their respective string files: ( `ls -Fasl`)
 
 # Extra credits
