@@ -1,7 +1,7 @@
 # Better structure for CMake
 The project is a very small one. Realistic programs have sometimes hundreds of header and source files.
-So whilst it is theoretically possible to create only one CMakeLists.txt file, it would become messy and
-unmaintainable.
+So whilst it is theoretically possible to create only one CMakeLists.txt file, it would quickly become messy
+and unmaintainable.
 
 # Include sub-directories
 The best way to structure the `cmake hierarchy` is to follow the project folder hierarchy.
@@ -14,15 +14,13 @@ The way to tell cmake to include sub-directories for processing is the instructi
 01) in the Step03/src folder create a CMakelists.txt file, e.g. by `touch ./src/CMakeLists.txt`
 02) edit ./CMakeLists.txt and ./src/CMakeLists.txt and move the lines
 ```
-# Adding something we can run - Output name matches target name
 add_executable(step3 src/step3.cc src/greeter.cc)
 ```
 from ./CMakeLists.txt to ./src/CMakeLists.txt and save both files
-03) edit the file ./CMakeLists.txt and add the line 
+03) edit the file ./CMakeLists.txt in the root directory and add the line at the end and save.
 ```
 add_subdirectory(src)
 ```
-at the end of the file and save it.
 04) in the build folder run `cmake ..`
 05) observe: The build fails with error message
 ```
@@ -37,12 +35,12 @@ CMake Error at src/CMakeLists.txt:1 (add_executable):
 
 # What's tricks?
 cmake looks for files in relative folders to the current folder, so since the CMakeLists.txt
-is *in* the folder src we needed to remove the relative path `src` from the files in the add_executable target.
+is *in* the folder `./src` we needed to remove the relative path `src` from the files in the add_executable target.
 
 # If you want to try this again then
-30) cd CMakeTutorial/Step03
-31) rm -rf build
-32) cp CMakeLists-backup.txt CMakeLists.txt
-33) rm src/CMakeLists.txt
+10) cd CMakeTutorial/Step03
+11) rm -rf build
+12) cp CMakeLists-backup.txt CMakeLists.txt
+13) rm src/CMakeLists.txt
 
 

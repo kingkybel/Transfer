@@ -1,6 +1,6 @@
 # Add a library and link to it
 Almost always in C++ we use libraries to re-use code and increase productivity.
-Now we will create a library and link it to executable.
+Now we will create a library and link it to the executable.
 
 # Add a library target
 Cmake has another target type for libraries similar to `add_executable` called
@@ -8,10 +8,17 @@ Cmake has another target type for libraries similar to `add_executable` called
 
 00) edit src/CMakeLists.txt and add the following lines to the start of the file:
 ```
-# Put the greeter in a static library
 add_library(greeter STATIC greeter.cc)
 ```
-01) remove the `greeter.cc` from the step4 executable target
+01) remove the `greeter.cc` from the step4 executable target:
+change
+```
+add_executable(step4 step4.cc greeter.cc)
+```
+to
+```
+add_executable(step4 step4.cc)
+```
 02) save, create and change into a build directory and try to build
 03) observe1: The library builds correctly:
 ```
@@ -20,19 +27,18 @@ add_library(greeter STATIC greeter.cc)
 ```
 04) observe2: The build of the executable fails with the familiar error `undefined reference to 'sayHello()'`
 
-
 The reason for this is that we did not tell cmake that the greeter library is necessary for the build of the executable `step4`.
 So we need to tell cmake that the executable target `step4` needs a library called `greeter`.
-_NOTE_: In Posix systems library-filneames typically follow the naming convention `lib<name>(_)?<version>.(a|so)`,
+_NOTE_: In Posix systems library-filneames typically follow the naming convention `lib<name>(_)?<version>[<debug-tag>]?.(a|so)`,
         for example `libdietersutils_1.0.2.a`.
-        In cmake it is sufficient to provide the <name> - part of the filename to identify the library.
+        In cmake it is sufficient to provide the <name> - part of the filename (here: `dietersutils`) to identify the library.
         In our case we created the library file `libgreeter.a` which we want to link to the exe.
 
-10) add the following line at the end of the file src\CMakeLists.txt
+10) add the following line at the end of the file src/CMakeLists.txt
 ```
 target_link_libraries(step4 greeter)
 ```
-This tells cmake that the target (-executable) `step4` requires to link library `libgreeter.a`
+This tells cmake that the target (-executable) `step4` needs to be linked to library `libgreeter.a`
 11) run `make` again
 12) observe that the build is now successful (find both the library and the executable in the build/src folder)
 

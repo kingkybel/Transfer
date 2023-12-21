@@ -21,6 +21,7 @@ provides a set of tools to find and make known the necessary paths.
 mv ./output/lib/libgreeter.a ./installdir
 ```
 03) edit the src/CMakeLists.txt file and comment out the line `add_library(greeter STATIC greeter.cc)` by prepending a '#'
+    This way we simulate an external pre-built library
 04) in the build-folder try to build the application
 05) observe: You'll get an error `/usr/bin/ld: cannot find -lgreeter: No such file or directory`
 

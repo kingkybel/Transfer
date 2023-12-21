@@ -9,7 +9,8 @@ cmake provides a lot of variables to customize builds. They include:
 - (compile-) parameters
 - and more ...
 
-They start with `CMAKE_` so you should avoid using this prefix, lest you inadvertently override any existing one.
+They start with `CMAKE_` so you should avoid using this prefix for your custom-variables, lest you inadvertently
+override any existing one.
 For writing output of your build to a custom location cmake provides the following variables:
 
 - `CMAKE_RUNTIME_OUTPUT_DIRECTORY`: location for executables
@@ -26,8 +27,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output/lib)
 02) observe: the folders Step05/output/bin and Step05/output/lib are created
 04) run `make`
 05) observe:
-    - the libgreeter.a file is in the `lib` folder
-    - the step5 executable is in the `bin` folder
+    - the libgreeter.a file is in the `Step05/output/lib` folder
+    - the step5 executable is in the `Step05/output/bin` folder
 
 # Extra credits
 Create a dynamic (SHARED) library instead of a static one and see where the resulting *.so file is put
