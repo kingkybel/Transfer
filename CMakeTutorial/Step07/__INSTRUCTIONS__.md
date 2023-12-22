@@ -63,29 +63,33 @@ set(CMAKE_CXX_FLAGS_RELEASE
 # this adds a suffix to the name of any created library, if the configuration is "Debug"
 set(CMAKE_DEBUG_POSTFIX _dbg)
 ```
-01) save and go to the build-directory and build with command (`cmake -DCMAKE_BUILD_TYPE=Release .. ; make`)
-02) observe: - an extra info message is printed on cmake: `CMAKE_BUILD_TYPE=Release`
+01) In the file src/CMakeLists.txt append the line
+```
+set_target_properties(step7 PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+```
+02) save and go to the build-directory and build with command (`cmake -DCMAKE_BUILD_TYPE=Release .. ; make`)
+03) observe: - an extra info message is printed on cmake: `CMAKE_BUILD_TYPE=Release`
                this means now the build is now set to Release
              - the  executables are built as before
-03) Now we want to start a Debug build so run the command: `cmake -DCMAKE_BUILD_TYPE=Debug ..`
-04) observe: the build-type message has no changed to: `CMAKE_BUILD_TYPE=Debug`
-05) run `make`
-06) observe: a new compilation/link starts and the library and executable have a "_dbg" suffix
-07) change to the executable output directory (`cd ../output/bin`)
-08) run: `strings step7 > step7.str ; strings step7_dbg > step7_dbg.str`
+04) Now we want to start a Debug build so run the command: `cmake -DCMAKE_BUILD_TYPE=Debug ..`
+05) observe: the build-type message has no changed to: `CMAKE_BUILD_TYPE=Debug`
+06) run `make`
+07) observe: a new compilation/link starts and the library and executable have a "_dbg" suffix
+08) change to the executable output directory (`cd ../output/bin`)
+09) run: `strings step7 > step7.str ; strings step7_dbg > step7_dbg.str`
     This just creates 2 text file (one for each exe) containing readable strings in the respective executables
-19) run: `diff step7.str step7_dbg.str`
+10) run: `diff step7.str step7_dbg.str`
 _NOTE_: diff is a command-line comparison utility, but you can use the VSCode-comparison for visual comparison
         if you prefer
-20) compare sizes of debug and release executables and their respective string files: ( `ls -Fasl`)
+11) compare sizes of debug and release executables and their respective string files: ( `ls -Fasl`)
 
 # Extra credits
 If you know gdb, you can try debugging either of the executables in turn.
     
 
 # If you want to try this again then
-30) cd CMakeTutorial/Step07
-31) rm -rf build output instlldir
-32) cp CMakeLists-backup.txt CMakeLists.txt
-33) cp src/CMakeLists-backup.txt src/CMakeLists.txt
+20) cd CMakeTutorial/Step07
+21) rm -rf build output instlldir
+22) cp CMakeLists-backup.txt CMakeLists.txt
+23) cp src/CMakeLists-backup.txt src/CMakeLists.txt
 

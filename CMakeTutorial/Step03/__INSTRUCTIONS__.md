@@ -4,7 +4,7 @@ So whilst it is theoretically possible to create only one CMakeLists.txt file, i
 and unmaintainable.
 
 # Include sub-directories
-The best way to structure the `cmake hierarchy` is to follow the project folder hierarchy.
+The best way to structure the `cmake hierarchy` is to follow the `project folder hierarchy`.
 Typically only the root-folder and sub-folders containing C++ source files have a CMakeLists.txt,
 but this is not a restriction: you can put a CMakeLists.txt anywhere you like.
 
@@ -12,7 +12,7 @@ The way to tell cmake to include sub-directories for processing is the instructi
 
 00) in the Step03 - root directory create a build sub-folder
 01) in the Step03/src folder create a CMakelists.txt file, e.g. by `touch ./src/CMakeLists.txt`
-02) edit ./CMakeLists.txt and ./src/CMakeLists.txt and move the lines
+02) edit ./CMakeLists.txt and ./src/CMakeLists.txt and move the line
 ```
 add_executable(step3 src/step3.cc src/greeter.cc)
 ```

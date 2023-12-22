@@ -5,8 +5,8 @@ project(
   VERSION 1.0
   LANGUAGES CXX)
 
-add_executable(step3 src/step3.cc src/greeter.cc)
 include_directories(
   ${CMAKE_SOURCE_DIR}/include
   )
 
+add_subdirectory(src)

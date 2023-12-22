@@ -19,3 +19,13 @@ foreach(CPP_FILE_TARGET exe1 exe2 exe3)
         add_executable(${CPP_FILE_TARGET} ${CPP_FILE_TARGET}.cc)
         target_link_libraries(${CPP_FILE_TARGET} STATIC ${CPP_FILE_TARGET})
 endforeach()
+
+add_executable(exe1 exe1.cc)
+target_link_libraries(exe1 STATIC exe1)
+
+add_executable(exe2 exe2.cc)
+target_link_libraries(exe2 STATIC exe2)
+
+add_executable(exe3 exe3.cc)
+target_link_libraries(exe3 STATIC exe3)
+
