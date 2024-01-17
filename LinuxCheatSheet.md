@@ -278,4 +278,7 @@ Below are some examples that I have used in the past ant that illustrate the pow
 ```
 find /my/log/directory -name "*.log" -type f | xargs -I{} tail -f {} | grep "productid=CP-[0-9]+"
 ```
-This command would first find all regular files (`-type f`) with extension "log" in the folder /my/log/directory .
+This command would first find all regular files (`-type f`) with extension "log" in the folder /my/log/directory.
+All the found files would then be tailed as they change.
+The output would then be filtered to only include lines with matching substrings to "productid=CP-[0-9]+"
+
