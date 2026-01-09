@@ -4,7 +4,7 @@ In Linux/Unix much we (can) do is done on the command-line shell (bash, sh, ksh,
 Why? Because it’s fast, scriptable, composable and consistent.
 
 ## The most important command
-man <command>: get help about a command (manual entry). The man-pages of a command, if and when they exist give information about
+`man <command>`: get help about a command (manual entry). The man-pages of a command, if and when they exist give information about
     - what the command does
     - what parameters the command accepts
     - errors/exceptions
@@ -21,7 +21,7 @@ give yourself mental clues you can create shortcuts by creating aliases.
 alias: give (a set of) commands a name
 
 ### Example
-The ls command in its pure form (without parameters) lists files and directories in the current directory as a 
+The `ls` command in its pure form (without parameters) lists files and directories in the current directory as a 
 tab-separated list of strings without any information about the file-system objects apart from their names. 
 This might be sufficient for some purposes, but often we are interested in 
     - type of object (file, directory, ...)
@@ -35,7 +35,7 @@ By defining an alias you can save yourself from forgetting parameters.
 `[~/myuser]> alias l=”ls -F -a -s -l”`
 
 Now if you type 
-`[~/myuser]> l` on the command line the command  `ls -F -a -s -l`` will be executed.
+`[~/myuser]> l` on the command line the command  `ls -F -a -s -l` will be executed.
 
 ### Caveat
  The name of the alias can be any C/C++ style identifier, but you should take care not to 	override any 
@@ -106,7 +106,7 @@ This will write a line similar to `ERROR_CODE=2`
 In most cases the explicit error value is not needed, see chapter below about command chaining.
 
 ## Directory operations
-_cd [<dir>]_: change directory. Without parameters go to the home directory
+_cd [\<dir\>]_: change directory. Without parameters go to the home directory
 
 _pushd_: change directory, similar to cd, put current directory on a stack
 
@@ -114,7 +114,7 @@ _popd_: change back to the top directory on the stack
 
 _pwd_: complete path of the current directory
 
-_ls [<dir>]_: list contents of directory dir
+_ls [\<dir\>]_: list contents of directory dir
 	Important options:
     - -a: Show all (including hidden)
     - -R: recursive into readable subdirectories
@@ -122,7 +122,7 @@ _ls [<dir>]_: list contents of directory dir
     - -l: long list format – shows ownership and access-rights
     - -1: list one file per line, handy for grep’ing and piping into other commands
 
-_mkdir <dir>_: make directory dir, if all directories in the given path exist except the last one.
+_mkdir \<dir\>_: make directory dir, if all directories in the given path exist except the last one.
 If you want to create a path and the current user has sufficient rights to do so, every directory
 in the path will be created.
 
@@ -136,17 +136,17 @@ e.g.:
 On the command-line operations can be chained in a few different ways.
 Sequential execution
 
-<command1>;<command2>;…;<command_n>: chaining with a semicolon will execute each of the given commands in turn.
+\<command1\>;\<command2\>;…;\<command_n\>: chaining with a semicolon will execute each of the given commands in turn.
 If any commands in the chain fails the next command is executed regardless
 
-<command1>&&<command2>&&…&&<command_n>: chaining with a double ampersand (and) will execute each of the given
+\<command1\>&&\<command2\>&&…&&\<command_n\>: chaining with a double ampersand (and) will execute each of the given
 commands in turn. If any commands in the chain fails (i.e. if the return code of the command is not equal to zero)
 the execution stops
 
-<command1>||<command2>||…||<command_n>: chaining with a double pipe (or) will try to execute the commands from left
+\<command1>||\<command2\>||…||\<command_n\>: chaining with a double pipe (or) will try to execute the commands from left
 to right and execution will stop at the first successfully completed command
 
-<command1>|<command2>|…|<command_n>: chaining with a single pipe will execute the commands from left to right and the
+\<command1\>|\<command2\>|…|\<command_n\>: chaining with a single pipe will execute the commands from left to right and the
 output of each command will be the input of the command to the right of the pipe.
 
 xargs: build and execute command lines from standard input. This is helpful when chaining commands. It can be used to
