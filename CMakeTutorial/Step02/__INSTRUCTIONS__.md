@@ -33,6 +33,7 @@ include_directories(
 ```
 _NOTE_: The variable `CMAKE_SOURCE_DIR` in the above segment is a cmake variable that is set to the location 
         of the current CMakeLists.txt
+        
 12) in the build directory try `make` again
 13) observe: the build fails again, but with a different error:
 ```
