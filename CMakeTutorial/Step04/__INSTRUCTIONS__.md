@@ -40,6 +40,7 @@ _NOTE_: In Posix systems library-filneames typically follow the naming conventio
 target_link_libraries(step4 greeter)
 ```
 This tells cmake that the target (-executable) `step4` needs to be linked to library `libgreeter.a`
+
 11) run `make` again
 12) observe that the build is now successful (find both the library and the executable in the build/src folder)
 
