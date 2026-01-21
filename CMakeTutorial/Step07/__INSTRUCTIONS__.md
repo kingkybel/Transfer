@@ -77,10 +77,12 @@ set_target_properties(step7 PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
 07) observe: a new compilation/link starts and the library and executable have a "_dbg" suffix
 08) change to the executable output directory (`cd ../output/bin`)
 09) run: `strings step7 > step7.str ; strings step7_dbg > step7_dbg.str`
-    This just creates 2 text file (one for each exe) containing readable strings in the respective executables
+    This just creates 2 text files (one for each exe) containing readable strings in the respective executables
 10) run: `diff step7.str step7_dbg.str`
+
 _NOTE_: diff is a command-line comparison utility, but you can use the VSCode-comparison for visual comparison
         if you prefer
+        
 11) compare sizes of debug and release executables and their respective string files: ( `ls -Fasl`)
 
 # Extra credits
