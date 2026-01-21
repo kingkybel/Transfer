@@ -29,6 +29,7 @@ add_executable(step4 step4.cc)
 
 The reason for this is that we did not tell cmake that the greeter library is necessary for the build of the executable `step4`.
 So we need to tell cmake that the executable target `step4` needs a library called `greeter`.
+
 _NOTE_: In Posix systems library-filneames typically follow the naming convention `lib<name>(_)?<version>[<debug-tag>]?.(a|so)`,
         for example `libdietersutils_1.0.2.a`.
         In cmake it is sufficient to provide the <name> - part of the filename (here: `dietersutils`) to identify the library.
